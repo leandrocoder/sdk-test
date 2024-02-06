@@ -1,7 +1,12 @@
 import r2wc from "@r2wc/react-to-web-component"
-import { Greeting } from "./Greeting"
+import { LetterCount } from "../components/LetterCount";
 
-const WebGreeting = r2wc(Greeting)
-customElements.define("web-greeting", WebGreeting);
+const WCLetterCount = r2wc(LetterCount, {
+    props: {
+        name: 'string'
+    }
+});
+
+customElements.define("letter-count", WCLetterCount);
 
 export {} // This file is a module, so it needs to be in strict mode

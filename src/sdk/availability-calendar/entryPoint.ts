@@ -8,4 +8,3 @@ function create(): IAvailabilityCalendar {
 export default {
     create,
 };
-
