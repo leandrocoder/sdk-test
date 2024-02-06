@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>My Website @ INTERNET</h1>
+    <button id="btn">Get Availability</button>
+    <pre id="code"></pre>
+    <br>
+
+    <script src="http://localhost:8080/webcomponents/webcomponents.js"></script>
+    <letter-count />
+
+    <script type="module">
+        const { create } = (await import('http://localhost:8080/sdk/availability-calendar/entryPoint.js')).default;
+        const availabilityCalendar = create();
+        
+        const btn = document.getElementById('btn');
+        const codeContainer = document.getElementById('code');
+        btn.addEventListener('click', async () => {
+            const val = await availabilityCalendar.getDay({date:'2024-01-01'});
+            codeContainer.innerText = JSON.stringify(val, null, 2);
+        });
+    </script>
+</body>
+</html>
